@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.List;
 
 import reclameakids.DAO.CategoriaDAO;
 import reclameakids.DAO.FilhoDAO;
 import reclameakids.DAO.ICategoriaDAO;
+import reclameakids.DAO.IFilhoDAO;
 import reclameakids.DAO.IFilhoDAO;
 import reclameakids.entidades.Avaliacao;
 import reclameakids.entidades.Avaliador;
@@ -34,11 +36,28 @@ public class App {
         Denuncia denuncia = new Denuncia(avaliador2, "Não gostei", avaliacao);
     
         ICategoriaDAO categoria = new CategoriaDAO();
+        
+       
         categoria.inserir(categoria1);
+        
+        categoria1.setNome("aoooba");
+        categoria.alterar(categoria1);
         
         IFilhoDAO filho = new FilhoDAO();
         filho.inserir(filho1);
-	
+        
+        List<Categoria> categorias = categoria.listar(Categoria.class);
+        
+        for(int i = 0; i< categorias.size(); i++)
+        {
+        	System.out.println(categorias.get(i).getNome());
+        }
+        
+        Filho teste = filho.recuperar(Filho.class, 2);
+        
+        System.out.println(teste.getIdade());
+        
+        categoria.deletar(categoria.recuperar(Categoria.class, 1));
 	}
 
 }

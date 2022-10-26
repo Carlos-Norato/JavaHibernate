@@ -15,6 +15,10 @@ public class Filho {
 	private int id;
 	private int idade;
 
+	protected Filho() {
+		
+	}
+	
     public Filho(int idade) {
         this.idade = idade;
     }

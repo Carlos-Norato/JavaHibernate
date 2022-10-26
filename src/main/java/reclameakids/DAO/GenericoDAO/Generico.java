@@ -24,13 +24,26 @@ public abstract class Generico<T> implements IGenerico<T> {
 
 	@Override
 	public void alterar(T obj) {
-		// TODO Auto-generated method stub
+		session = HibernateUtil.getSession();
+		transacao = session.beginTransaction();
+		
+		session.update(obj);
+		
+		transacao.commit();
+		session.close();
 		
 	}
 
 	@Override
 	public void deletar(T obj) {
-		// TODO Auto-generated method stub
+		session = HibernateUtil.getSession();
+		transacao = session.beginTransaction();
+		
+		session.delete(obj);
+		
+		transacao.commit();
+		session.close();
+
 		
 	}
 
